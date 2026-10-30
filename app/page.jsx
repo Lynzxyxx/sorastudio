@@ -1,23 +1,33 @@
+import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
+import Services from '@/components/Services';
 import Projects from '@/components/Projects';
+import WhyMe from '@/components/WhyMe';
+import Pricing from '@/components/Pricing';
+import CtaBanner from '@/components/CtaBanner';
+import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import Motion from '@/components/Motion';
+import Floating from '@/components/Floating';
+import RevealInit from '@/components/RevealInit';
 
 export default function Page() {
   return (
     <>
+      <Header />
       <main>
         <Hero />
-        <About />
-        <Skills />
+        <Services />
         <Projects />
+        <WhyMe />
+        <Pricing />
+        <CtaBanner />
+        <Skills />
         <Contact />
       </main>
       <Footer />
-      <Motion />
+      <Floating />
+      <RevealInit />
     </>
   );
 }

@@ -1,45 +1,43 @@
 import './globals.css';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 import { site } from '@/lib/data';
 
-const space = Space_Grotesk({ subsets: ['latin'], weight: ['500', '700'], variable: '--font-space', display: 'swap' });
+const poppins = Poppins({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--font-poppins', display: 'swap' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
-const title = `${site.name} | SMM Panel Developer, OTP API Provider & Web Developer`;
-const description = `${site.name} dari ${site.team}, web developer di ${site.location}. Membuat SMM panel, layanan OTP, API nomor kosong, dan website. Terbuka untuk kerja dan freelance.`;
+const title = `${site.name} | ${site.role} di ${site.location}`;
+const description = `${site.name}, ${site.role.toLowerCase()} di ${site.location}. Pembuatan SMM panel, integrasi API OTP, API nomor kosong, dan website. Konsultasi awal gratis.`;
 
 export const metadata = {
   metadataBase: new URL(site.url),
   title: { default: title, template: `%s | ${site.name}` },
   description,
-  keywords: ['web developer Pekanbaru', 'SMM panel developer', 'OTP API provider', 'API nomor kosong', 'Sora Pedia', 'Laravel developer', 'freelance web developer Riau'],
+  keywords: ['web developer Pekanbaru', 'jasa SMM panel', 'API OTP', 'API nomor kosong', 'jasa pembuatan website Riau', 'Sora Pedia', 'Gilang Ramadhan'],
   authors: [{ name: site.name }],
   alternates: { canonical: '/' },
-  openGraph: { title, description, url: site.url, siteName: `${site.name} Portfolio`, locale: 'id_ID', type: 'website' },
+  openGraph: { title, description, url: site.url, siteName: site.name, locale: 'id_ID', type: 'website' },
   twitter: { card: 'summary_large_image', title, description },
   robots: { index: true, follow: true },
 };
 
-export const viewport = { themeColor: '#05040A', width: 'device-width', initialScale: 1 };
+export const viewport = { themeColor: '#0F1424', width: 'device-width', initialScale: 1 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
+  '@type': 'ProfessionalService',
   name: site.name,
-  jobTitle: site.role,
+  description,
   url: site.url,
-  sameAs: [site.panelUrl, site.socials.instagram.url, site.socials.tiktok.url],
-  email: site.email,
-  worksFor: { '@type': 'Organization', name: site.team },
+  telephone: `+${site.whatsapp}`,
+  areaServed: 'ID',
   address: { '@type': 'PostalAddress', addressLocality: 'Pekanbaru', addressRegion: 'Riau', addressCountry: 'ID' },
-  knowsAbout: ['SMM Panel', 'OTP API', 'Laravel', 'PHP', 'MySQL', 'Tailwind CSS'],
+  sameAs: [site.websiteUrl, site.socials.instagram.url, site.socials.tiktok.url],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${space.variable} ${inter.variable}`}>
+    <html lang="id" className={`${poppins.variable} ${inter.variable}`}>
       <body>
-        <noscript><style>{'[data-reveal]{visibility:visible!important}'}</style></noscript>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         {children}
       </body>
